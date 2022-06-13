@@ -17,7 +17,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
-
+app.use('/authentication', require('./controllers/authentication'))
+// app.use('/authentication', reqiure('./controllers/authentication'))
 
 // app.get('/', (req, res) => {
 //     res.send('find server')
@@ -39,6 +40,18 @@ app.get('/users', (req, res) => {
     try{
         res.status(200).json({
             message: "This is the user route"
+        })
+    } catch(err){
+        res.status(500).json({
+            message: "error"
+        })
+    }
+})
+
+app.get('/authentication', (req, res) => {
+    try{
+        res.status(200).json({
+            message: "This is the authentication route"
         })
     } catch(err){
         res.status(500).json({
